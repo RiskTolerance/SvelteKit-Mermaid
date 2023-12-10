@@ -3,8 +3,7 @@
 	import { onMount } from 'svelte';
 
 	const kph = 34;
-	let diagram = `\
-  
+	let tt1diagram = `\
     gantt
     tickInterval 1hour
     title Truxport Line 1
@@ -19,9 +18,9 @@
     section TT C
         
     section TT D
-        D 07 - 34 :d1, 2023-12-10, ${328 / kph}h
+        D 07 - 34 :d01, 2023-12-10, ${328 / kph}h
     section TT E
-        E 01 - 02 :e01, after d1, ${24 / kph}h
+        E 01 - 02 :e01, after d01, ${24 / kph}h
     section TT F
         F 01      :f01, after e01, ${1 / kph}h
     section TT G
@@ -32,12 +31,42 @@
         X 01 - 02 :x01, after f01, ${36 / kph}h
     `;
 
-	let container: HTMLElement;
+	let tt2diagram = `\
+    gantt
+    tickInterval 1hour
+    title Truxport Line 2
+    axisFormat %
+    Section RUSH
+
+    section TT A
+        A 09 - 17, :a01, 2023-12-10, ${108 / kph}h
+    section TT B
+        
+    section TT C
+        C 01 - 17, :c01, after f01, ${204 / kph}h
+    section TT D
+        
+    section TT E
+        E 03 - 18, :e01, after a01, ${176 / kph}h
+    section TT F
+        F 02 - 18, :f01, after e01, ${200 / kph}h
+    section TT G
+        
+    section TT H
+        
+    section TT X
+        
+    `;
+
+	let tt1container: HTMLElement;
+	let tt2container: HTMLElement;
 
 	async function renderDiagram() {
 		// console.log(diagram);
-		const { svg } = await mermaid.render('mermaid', diagram);
-		container.innerHTML = svg;
+		const ttRender1 = await mermaid.render('mermaid', tt1diagram);
+		const ttRender2 = await mermaid.render('mermaid', tt2diagram);
+		tt1container.innerHTML = ttRender1.svg;
+		tt2container.innerHTML = ttRender2.svg;
 	}
 
 	onMount(() => {
@@ -51,7 +80,8 @@
 		<p>Kits per hour: {kph}</p>
 	</div>
 	<!-- <pre contenteditable="true" bind:innerHTML={diagram}></pre> -->
-	<span bind:this={container}></span>
+	<span bind:this={tt1container}></span>
+	<span bind:this={tt2container}></span>
 </main>
 
 <style global>
