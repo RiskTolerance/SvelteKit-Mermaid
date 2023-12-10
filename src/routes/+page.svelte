@@ -26,7 +26,7 @@
     section TT G
         G 18 - 35 :g01, after x01, ${210 / kph}h
     section TT H
-        H 01 - 34 :h01, after g01, ${408 / kph}h
+        H 01 - 34 :h01, after b01, ${408 / kph}h
     section TT X
         X 01 - 02 :x01, after f01, ${36 / kph}h
     `;
