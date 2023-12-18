@@ -41,28 +41,27 @@
     section TT A
         A 09 - 17, :a01, 2023-12-10, ${108 / kph}h
     section TT B
-        
+    
     section TT C
         C 01 - 17, :c01, after f01, ${204 / kph}h
     section TT D
-        
+
     section TT E
         E 03 - 18, :e01, after a01, ${176 / kph}h
     section TT F
         F 02 - 18, :f01, after e01, ${200 / kph}h
     section TT G
-        
+    
     section TT H
-        
+    
     section TT X
-        
+    
     `;
 
 	let tt1container: HTMLElement;
 	let tt2container: HTMLElement;
 
 	async function renderDiagram() {
-		// console.log(diagram);
 		const ttRender1 = await mermaid.render('mermaid', tt1diagram);
 		const ttRender2 = await mermaid.render('mermaid', tt2diagram);
 		tt1container.innerHTML = ttRender1.svg;
